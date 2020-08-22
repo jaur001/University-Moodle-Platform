@@ -1,0 +1,16 @@
+body {
+	text-align: center;
+	background-image: url("../images/aghhome.jpg");
+	background-color: white;
+	background-repeat: no-repeat;
+	font-family: "Times New Roman", Times, serif;
+}
+h1 {
+	font-size: 50px;
+	border-style: solid;
+	background-color: black;
+	color: white;
+}
+button {
+	font-size: 50px;
+}

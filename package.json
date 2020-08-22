@@ -1,0 +1,27 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "ExMongodb",
+  "main": "app2.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Juan UR",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "browser-refresh": "^1.7.3",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.6",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "reload": "^3.0.1",
+    "try-catch": "^2.0.0",
+    "trycatch": "^1.5.21"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}

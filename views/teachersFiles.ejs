@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students´s marks</title>
+  <style>
+    body {
+        text-align: center;
+        background-image: url("/images/aghhome.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-color: white;
+        background-repeat: no-repeat;
+        font-family: Calibri, Myriad;
+    }
+    h1 {
+        font-size: 50px;
+        border-style: solid;
+        background-color: black;
+        color: white;
+    }
+    input{
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    button {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    span{
+        border: 3px solid black;
+        background-color: white;
+        margin: auto;
+        font-size: 40px;
+        text-align: center;
+    }
+    table, td, th {
+        background-color: white;
+        color: black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th{
+        font-size: 30px;
+        border: 3px solid green;
+    }
+
+    td {
+        font-weight: 900;
+        border: 2px solid red;
+        font-size: 20px;
+        height: 50px;
+        vertical-align: center;
+        text-align: center;
+    }
+    h1 {
+        font-size: 50px;
+    }
+    h2 {
+        font-size: 50px;
+    }
+    .leftsided{
+        float: right;
+    }
+    .main{
+        border-style: solid;
+        background-color: black;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <h1>
+        List of Students and his/her marks
+    </h1>
+    <form action="/change" method="POST">
+        <input type="text" placeholder="Username" name="Username">
+        <input type="text" placeholder="Rating" name="Rating">
+        <button type="submit">Change grade</button>
+    </form>
+    <form action="/logout" method="POST">
+        <button class="leftsided" type="submit">Log out</button>
+    </form>
+	<table>
+        <tr>
+            <th>Username</th>
+            <th>History</th>
+            <th>Maths</th>
+            <th>Informatics</th>
+            <th>English</th>
+        </tr>
+            <% for(var i=0; i<users.length; i++) {%>
+                <tr>
+                    <div class="user">
+                        <td><%= users[i].Username %></td>
+                        <td><%= users[i].History %></td>
+                        <td><%= users[i].Maths %></td>
+                        <td><%= users[i].Informatics %></td>
+                        <td><%= users[i].English %></td>
+                    </div>
+                </tr>
+            <% } %>
+    </table>
+</body>
+</html>

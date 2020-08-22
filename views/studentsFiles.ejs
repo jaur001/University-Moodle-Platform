@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students´s marks</title>
+  <style>
+  body {
+    text-align: center;
+    background-image: url("/images/aghhome.jpg");
+    background-size: cover;
+    background-color: white;
+    background-repeat: no-repeat;
+    font-family: "Times New Roman", Times, serif;
+  }
+  h1 {
+    font-size: 60px;
+    border-style: solid;
+    background-color: black;
+    color: white;
+  }
+  h2 {
+    font-size: 50px;
+    border-style: solid;
+    background-color: black;
+    color: white;
+  }
+  h3 {
+    font-size: 40px;
+  }
+  button {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+  span{
+    border: 3px solid black;
+    background-color: white;
+    margin: auto;
+    font-size: 40px;
+    text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    Your marks
+  </h1>
+  <h2><%= users[0].Username %></h2>
+	<ul class="users">
+   	<li class="user">
+      <h3>History<h3>
+      <span><%= users[0].History %></span>
+      <h3>Maths<h3>
+      <span><%= users[0].Maths %></span>
+      <h3>Informatics<h3>
+      <span><%= users[0].Informatics %></span>
+      <h3>English<h3>
+      <span><%= users[0].English %></span>
+    </li>
+	</ul>
+  <form action="/logout" method="POST">
+    <button type="submit">Log out</button>
+  </form>
+</body>
+</html>

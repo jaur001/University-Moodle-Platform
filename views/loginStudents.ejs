@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  	<meta charset="UTF-8">
+  	<style>
+		body{
+	  		background-image: url("/images/aghhome.jpg");
+            background-size: cover;
+	  	}
+		form{
+			text-align: center;
+			font-family: "Times New Roman", Times, serif;
+		}
+		input{
+			font-size: 30px;
+  			margin-bottom: 10px;
+		}
+		span{
+			border: 1px solid black;
+			background-color: white;
+			margin: auto;
+			font-size: 20px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 50px;
+			border-style: solid;
+			background-color: black;
+			color: white;
+		}
+		button {
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Student login</h1>
+	<h2>Introduce your username and account</h2>
+	<form action="/student" method="POST">
+		<input id = "UsernameID" type="text" placeholder="Username" name="Username">
+		<br>
+	    <input id = "PasswordID" type="text" placeholder="Password" name="Password">
+	    <br>
+	    <button type="submit">Log in</button>
+	</form>
+
+	<ul class="users">
+	    <h2>List of Usernames of Student´s Database</h2>
+	    <% list = users; %>
+	    <% for(var i=0; i<users.length; i++) {%>
+	      <li class="user">
+	        <span><%= users[i].Username %></span>
+	      </li>
+	    <% } %>
+	</ul>
+</body>

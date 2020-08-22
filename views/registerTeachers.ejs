@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <script src="app.js"></script>
+  <style>
+  body {
+    background-image: url("/images/aghhome.jpg");
+    background-size: cover;
+    text-align: center;
+    background-color: white;
+    background-repeat: no-repeat;
+    font-family: "Times New Roman", Times, serif;
+  }
+  h1 {
+    font-size: 50px;
+    border-style: solid;
+    background-color: black;
+    color: white;
+  }
+  button {
+    font-size: 50px;
+  }
+  span{
+    border: 1px solid black;
+    background-color: white;
+    margin: auto;
+    font-size: 20px;
+    text-align: center;
+  }
+  input{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  select{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  option{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  </style>
+  <script>
+  	var registers;
+
+  	function register(result){
+	  var data = result.split("|");
+    if (data[2] == "History"){
+  	  var registered = {
+  	    Username: data[0],
+  	    Password: data[1],
+  	    Type: "1",
+  	    History:"1",
+  	    Maths:"0",
+  	    Informatics:"0",
+  	    English:"0"
+  	  };
+    } else if (data[2] == "Maths"){
+      var registered = {
+        Username: data[0],
+        Password: data[1],
+        Type: "1",
+        History:"0",
+        Maths:"1",
+        Informatics:"0",
+        English:"0"
+      };
+    } else if (data[2] == "Informatics"){
+      var registered = {
+        Username: data[0],
+        Password: data[1],
+        Type: "1",
+        History:"0",
+        Maths:"0",
+        Informatics:"1",
+        English:"0"
+      };
+    } else {
+      var registered = {
+        Username: data[0],
+        Password: data[1],
+        Type: "1",
+        History:"0",
+        Maths:"0",
+        Informatics:"0",
+        English:"1"
+      };
+    }
+	  return registered;
+	}
+
+	function getLink(){
+		var string = '/submit';
+		var add= "?username=";
+		var add2= document.getElementById("UsernameID").value;
+		var add3 = "&password=";
+		var add4 = document.getElementById("PasswordID").value;
+    var add5 = "&condition=";
+    var add6 = "1";
+    var add7 = "&subject=";
+    var add8 = document.getElementById("SubjectID").value;
+		string=string+add+add2+add3+add4+add5+add6+add7+add8;
+		return string;
+		
+	}
+
+  		  
+      function requestAJAX() {
+        // Create an object representing the request to the web server - see https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+        var xhr = new XMLHttpRequest(); 
+ 
+        // Registration of a (user) function that will process the response received from the server
+        xhr.onreadystatechange = () => response(xhr); 
+ 
+        // Execution of the (asynchronous) query to the web server
+		var string = getLink();
+        xhr.open('GET', string, true); 
+        xhr.send(null);
+        // Examples of the use of the above methods - see https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
+      }
+ 
+      /************************************************************/
+      /* The function that processes the response from the server */
+      /************************************************************/
+      function response(xhr){
+        try { 
+          if (xhr.readyState == XMLHttpRequest.DONE) { // If the response is ready
+            if (xhr.status == 200){                    // If requst was correct
+ 
+               // If the data you receive is a plain text or a JSON document, use the following code
+               	var result = xhr.responseText;			   // Get a response in the form of a string
+			   	console.log(result);
+			   	registers = register(result);
+			   	db.collection('users').save(registers, (err, result) => {
+					if (err) return console.log(err);
+					console.log('saved to database');
+				});
+ 
+               // If the data you receive is an HTML or XML document, use the following code
+               //var xmlDoc = xhr.responseXML; //Receive the answer in the form of object 'XmlDocument', which can be accessed using DOM methods - see https://www.w3.org/TR/domcore/
+            }
+            else 
+               window.alert('There was a problem with this request.');
+          }
+        } 
+        catch(e) {      
+          window.alert('Exception caught: ' + e.description);
+        } 
+     }
+  </script>
+</head>
+<body>
+  <h1>Teacher´s register</h1>
+  <h2>Introduce your username and password</h2>
+
+	<form action="/reTea" method="POST">
+		<input type="text" id ="UsernameID" placeholder="Username" name="Username">
+		<br>
+	  <input type="text" id ="PasswordID" placeholder="Password" name="Password">
+	  <br>
+    <select id="SubjectID" name="Subject">
+      <option value="History">History</option>
+      <option value="Maths">Maths</option>
+      <option value="Informatics">Informatics</option>
+      <option value="English">English</option>
+    </select>
+    <br>
+	  <button type="submit">register</button>
+	</form>
+  <ul class="users">
+    <h2>List of Names</h2>
+    <% for(var i=0; i<users.length; i++) {%>
+      <li class="user">
+        <span><%= users[i].Username %></span>
+      </li>
+    <% } %>
+  </ul>
+</body>

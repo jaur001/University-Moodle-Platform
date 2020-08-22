@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <script src="path/to/vanilla.js"></script>
+</head>
+<body>
+	<ul class="users">
+  	<% for(var i=0; i<users.length; i++) {%>
+    	<li class="user">
+      	<span><%= users[i].Username %></span>
+    	  <span><%= users[i].Password %></span>
+        <span><%= users[i].Type %></span>
+        <span><%= users[i].History %></span>
+        <span><%= users[i].Maths %></span>
+        <span><%= users[i].Informatics %></span>
+        <span><%= users[i].English %></span>
+    	</li>
+  	<% } %>
+	</ul>
+	<form action="/users" method="POST">
+	  <input type="text" placeholder="Username" name="Username">
+	  <input type="text" placeholder="Password" name="Password">
+    <input type="text" placeholder="Type" name="Type">
+    <input type="text" placeholder="Subject" name="History">
+    <input type="text" placeholder="Subject" name="Maths">
+    <input type="text" placeholder="Subject" name="Informatics">
+    <input type="text" placeholder="Subject" name="English">
+	  <button type="submit">register</button>
+	</form>
+</body>
+</html>
